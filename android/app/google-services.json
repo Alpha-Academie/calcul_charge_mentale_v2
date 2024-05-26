@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "217297950271",
+    "project_id": "calcul-charge-mentale-v2",
+    "storage_bucket": "calcul-charge-mentale-v2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217297950271:android:d23d6e02f0f4f3a0e74a8a",
+        "android_client_info": {
+          "package_name": "com.example.calculchargementalev2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "217297950271-tsr9td05ok8g4hv1euk4okq2663jhvag.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.calculchargementalev2",
+            "certificate_hash": "e6498c5ed7c7cb4c19745e4d8a6da100b95956cb"
+          }
+        },
+        {
+          "client_id": "217297950271-6jtk11oo7o260jnl9vq04jnute9f62od.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnoD3vkVZC83WRlScOL_2GQBW-RURBF6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "217297950271-6jtk11oo7o260jnl9vq04jnute9f62od.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "217297950271-jttk70vaavbmoa6n9honv0fg8bf0id3q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.calculchargementalev2"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

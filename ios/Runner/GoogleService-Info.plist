@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>217297950271-jttk70vaavbmoa6n9honv0fg8bf0id3q.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.217297950271-jttk70vaavbmoa6n9honv0fg8bf0id3q</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>217297950271-tsr9td05ok8g4hv1euk4okq2663jhvag.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAEovCNLlpSEp35dV_sUkfQ-vMTym8NluY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>217297950271</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.calculchargementalev2</string>
+	<key>PROJECT_ID</key>
+	<string>calcul-charge-mentale-v2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>calcul-charge-mentale-v2.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:217297950271:ios:ee9780365ac4f808e74a8a</string>
+</dict>
+</plist>
