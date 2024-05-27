@@ -33,7 +33,7 @@ class WelcomePage extends StatelessWidget {
           children: <Widget>[
             Text(
               "Bonjour et bienvenue, ${user?.displayName ?? "Cher utilisateur"}!",
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 20, color: Theme.of(context).primaryColor),
             ),
             SizedBox(height: 20),
             Text("Choisissez votre fonction :"),
@@ -46,6 +46,7 @@ class WelcomePage extends StatelessWidget {
               },
               child: Text('Je suis professeur'),
             ),
+            SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(

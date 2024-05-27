@@ -17,7 +17,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Color(0xFF10069F), // Couleur primaire
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          secondary: Color(0xFFFE5000), // Couleur secondaire
+        ),
+        scaffoldBackgroundColor: Color(0xFFFFF5DC), // Blanc cassé
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFF10069F), // Couleur primaire pour les boutons
+            foregroundColor: Colors.white, // Couleur du texte des boutons
+          ),
+        ),
       ),
       home: MyHomePage(),
     );
@@ -48,13 +58,20 @@ class MyHomePageContent extends StatelessWidget {
         children: <Widget>[
           Text(
             'Bienvenue sur votre application de calcul de charge mentale',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 24, 
+              fontWeight: FontWeight.bold, 
+              color: Color(0xFF10069F), // Couleur primaire pour le texte
+            ),
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 20),
           Text(
             'Vous allez pouvoir mesurer votre charge mentale pour la semaine à venir',
-            style: TextStyle(fontSize: 16),
+            style: TextStyle(
+              fontSize: 16, 
+              color: Color(0xFF10069F), // Couleur primaire pour le texte
+            ),
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 40),
