@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'settings_page.dart'; // Importez la nouvelle page des paramètres
 import 'teacher_page.dart';
 import 'student_page.dart';
 
@@ -11,7 +12,19 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Bienvenue')),
+      appBar: AppBar(
+        title: Text('Bienvenue'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => SettingsPage(user: user)),
+              );
+            },
+          ),
+        ],
+      ),
       body: Container(
         padding: EdgeInsets.all(16),
         alignment: Alignment.center,
