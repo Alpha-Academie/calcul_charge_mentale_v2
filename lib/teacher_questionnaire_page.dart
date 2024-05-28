@@ -43,7 +43,7 @@ class _TeacherQuestionnairePageState extends State<TeacherQuestionnairePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Questionnaire sur la charge mentale"),
+        title: Text("Questionnaire sur la charge mentale", style: TextStyle(color: Colors.white)),
       ),
       body: PageView.builder(
         controller: _controller,
@@ -58,7 +58,7 @@ class _TeacherQuestionnairePageState extends State<TeacherQuestionnairePage> {
                 children: <Widget>[
                   Text(
                     questions[index],
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Theme.of(context).primaryColor),
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 20),

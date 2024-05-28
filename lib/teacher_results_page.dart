@@ -56,7 +56,7 @@ class ResultsDisplayPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Résultat de votre évaluation"),
+        title: Text("Résultat de votre évaluation", style: TextStyle(color: Colors.white)),
       ),
       body: Container(
         color: backgroundColor,

@@ -22,10 +22,19 @@ class MyApp extends StatelessWidget {
           secondary: Color(0xFFFE5000), // Couleur secondaire
         ),
         scaffoldBackgroundColor: Color(0xFFFFF5DC), // Blanc cassé
+        appBarTheme: AppBarTheme(
+          color: Color(0xFF10069F), // Couleur primaire pour le header
+          titleTextStyle: TextStyle(color: Colors.white, fontSize: 20), // Texte blanc pour le header
+          iconTheme: IconThemeData(color: Colors.white), // Icônes blanches pour le header
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: Color(0xFF10069F), // Couleur primaire pour les boutons
             foregroundColor: Colors.white, // Couleur du texte des boutons
+            textStyle: TextStyle(
+              fontFamily: 'MerriweatherSans',
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
@@ -39,10 +48,42 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter Home Page'),
+        title: Text('OctoStress'),
       ),
-      body: Center(
-        child: MyHomePageContent(),
+      body: Stack(
+        children: [
+          Positioned(
+            top: 125,
+            left: 0,
+            right: 0,
+            child: Image.asset(
+              'assets/images/logo.png',
+              height: 100,
+              fit: BoxFit.contain,
+            ),
+          ),
+          Positioned(
+            top: 0,
+            right: 0,
+            child: Image.asset(
+              'assets/images/trace_orange.png',
+              height: 100,
+              fit: BoxFit.contain,
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            child: Image.asset(
+              'assets/images/trace_bleue.png',
+              height: 100,
+              fit: BoxFit.contain,
+            ),
+          ),
+          Center(
+            child: MyHomePageContent(),
+          ),
+        ],
       ),
     );
   }
@@ -56,11 +97,13 @@ class MyHomePageContent extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          SizedBox(height: 50), // Espace pour les images en haut
           Text(
-            'Bienvenue sur votre application de calcul de charge mentale',
+            'Bienvenue sur votre application de calcul de charge mentale OctoStress !',
             style: TextStyle(
-              fontSize: 24, 
-              fontWeight: FontWeight.bold, 
+              fontFamily: 'MerriweatherSans',
+              fontSize: 24, // Taille plus grande
+              fontWeight: FontWeight.bold, // Police en gras
               color: Color(0xFF10069F), // Couleur primaire pour le texte
             ),
             textAlign: TextAlign.center,
@@ -69,8 +112,9 @@ class MyHomePageContent extends StatelessWidget {
           Text(
             'Vous allez pouvoir mesurer votre charge mentale pour la semaine à venir',
             style: TextStyle(
-              fontSize: 16, 
-              color: Color(0xFF10069F), // Couleur primaire pour le texte
+              fontFamily: 'MerriweatherSans',
+              fontSize: 16, // Taille un peu plus grande
+              color: Colors.black, // Couleur noire pour le texte
             ),
             textAlign: TextAlign.center,
           ),

@@ -42,7 +42,7 @@ class _StudentQuestionnairePageState extends State<StudentQuestionnairePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Questionnaire Élève"),
+        title: Text("Questionnaire Élève", style: TextStyle(color: Colors.white)),
       ),
       body: PageView.builder(
         controller: _controller,
@@ -58,7 +58,7 @@ class _StudentQuestionnairePageState extends State<StudentQuestionnairePage> {
                 children: <Widget>[
                   Text(
                     questions[index],
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Theme.of(context).primaryColor),
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 20),

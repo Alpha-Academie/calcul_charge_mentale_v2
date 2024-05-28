@@ -13,7 +13,7 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bienvenue'),
+        title: Text('Bienvenue', style: TextStyle(color: Colors.white)),
         actions: [
           IconButton(
             icon: Icon(Icons.settings),

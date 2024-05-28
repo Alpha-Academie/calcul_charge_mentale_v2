@@ -5,19 +5,21 @@ class TeacherPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Bienvenue")),
+      appBar: AppBar(title: Text("Bienvenue", style: TextStyle(color: Colors.white))),
       body: Container(
         padding: EdgeInsets.all(16),
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Prêt à évaluer votre charge mentale pour la semaine ?",
-              style: TextStyle(fontSize: 18),
+            Text(
+              "Prêt à évaluer votre charge mentale pour la semaine ?",
+              style: TextStyle(fontSize: 18, color: Theme.of(context).primaryColor),
             ),
             SizedBox(height: 10), // Ajout d'un petit espace pour mieux séparer les textes
-            Text("Vous allez répondre à 6 questions qui vous prendrons seulement 2 minutes.",
-              style: TextStyle(fontSize: 16),
+            Text(
+              "Vous allez répondre à 6 questions qui vous prendrons seulement 2 minutes.",
+              style: TextStyle(fontSize: 16, color: Theme.of(context).primaryColor),
             ),
             SizedBox(height: 20),
             ElevatedButton(

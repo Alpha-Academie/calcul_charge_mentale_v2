@@ -52,7 +52,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Paramètres'),
+        title: Text('Paramètres', style: TextStyle(color: Colors.white)),
       ),
       body: ListView(
         children: <Widget>[

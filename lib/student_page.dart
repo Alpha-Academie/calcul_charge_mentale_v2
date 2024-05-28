@@ -5,19 +5,21 @@ class StudentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Bienvenue Élève")),
+      appBar: AppBar(title: Text("Bienvenue Élève", style: TextStyle(color: Colors.white))),
       body: Container(
         padding: EdgeInsets.all(16),
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Prêt à évaluer ta charge mentale pour la semaine?",
-              style: TextStyle(fontSize: 18),
+            Text(
+              "Prêt à évaluer ta charge mentale pour la semaine?",
+              style: TextStyle(fontSize: 18, color: Theme.of(context).primaryColor),
             ),
             SizedBox(height: 10), // Ajout d'un petit espace pour mieux séparer les textes
-            Text("Tu vas répondre à 5 questions qui te prendra seulement 2 minutes.",
-              style: TextStyle(fontSize: 16),
+            Text(
+              "Tu vas répondre à 5 questions qui te prendra seulement 2 minutes.",
+              style: TextStyle(fontSize: 16, color: Theme.of(context).primaryColor),
             ),
             SizedBox(height: 20),
             ElevatedButton(
