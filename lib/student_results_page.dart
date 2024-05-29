@@ -58,7 +58,7 @@ class StudentResultsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Résultat de votre évaluation", style: TextStyle(color: Colors.white)),
-        backgroundColor: backgroundColor,
+        backgroundColor: Theme.of(context).primaryColor, // Couleur du header uniforme
       ),
       body: Container(
         color: backgroundColor,
@@ -67,24 +67,92 @@ class StudentResultsPage extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Image.asset(imagePath, height: 100),
                 SizedBox(height: 20),
-                Text(result, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
+                Text(
+                  result,
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontFamily: 'MerriweatherSans-Bold',
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
                 SizedBox(height: 20),
-                ...advice.map((e) => Text(e, style: TextStyle(fontSize: 18, color: Colors.white))),
+                Container(
+                  padding: EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Theme.of(context).primaryColor),
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.white.withOpacity(0.8),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Conseils:',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'MerriweatherSans-Bold',
+                          color: Colors.black,
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      ...advice.map((e) => Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4.0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "- ",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontFamily: 'MerriweatherSans-Light',
+                                color: Colors.black,
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                e,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: 'MerriweatherSans-Regular',
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )),
+                    ],
+                  ),
+                ),
                 SizedBox(height: 20),
                 GestureDetector(
                   onTap: () => _launchURL('https://www.alphaacademie.fr/'),
                   child: Text(
                     "Allez sur Alpha Académie, c'est gratuit!",
-                    style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue, fontSize: 18),
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      color: Color(0xFF10069F), // Couleur du lien
+                      fontSize: 18,
+                      fontFamily: 'MerriweatherSans-Light',
+                    ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 20),
                 Text(
                   "Prochainement : une application de gestion du temps pour professeur et élève !",
-                  style: TextStyle(fontSize: 16, color: Colors.white),
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'MerriweatherSans-Regular',
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ],
