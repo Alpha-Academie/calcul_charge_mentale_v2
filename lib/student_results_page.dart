@@ -11,7 +11,6 @@ class StudentResultsPage extends StatelessWidget {
     String result;
     List<String> advice;
     String imagePath;
-    Color backgroundColor;
 
     if (totalHours < 25) {
       result = "Très faible charge mentale";
@@ -20,7 +19,6 @@ class StudentResultsPage extends StatelessWidget {
         "Utilisez le temps supplémentaire disponible pour approfondir vos connaissances dans les matières qui vous intéressent particulièrement, sans vous surcharger."
       ];
       imagePath = 'assets/images/smiley_happy.png';
-      backgroundColor = Colors.green[200]!;
     } else if (totalHours < 30) {
       result = "Faible charge mentale";
       advice = [
@@ -28,7 +26,6 @@ class StudentResultsPage extends StatelessWidget {
         "Prenez des pauses régulières pendant vos sessions d'étude pour maintenir votre concentration et votre bien-être mental."
       ];
       imagePath = 'assets/images/smiley_slightly.png';
-      backgroundColor = Colors.yellow[200]!;
     } else if (totalHours < 35) {
       result = "Charge mentale modérée";
       advice = [
@@ -36,7 +33,6 @@ class StudentResultsPage extends StatelessWidget {
         "Communiquez avec vos enseignants si vous rencontrez des difficultés pour obtenir de l'aide supplémentaire ou des conseils sur la manière de mieux gérer votre charge de travail."
       ];
       imagePath = 'assets/images/smiley_neutral.png';
-      backgroundColor = Colors.orange[200]!;
     } else if (totalHours < 40) {
       result = "Charge mentale élevée";
       advice = [
@@ -44,7 +40,6 @@ class StudentResultsPage extends StatelessWidget {
         "Organisez des sessions d'étude en groupe avec vos camarades de classe pour partager les charges de travail et bénéficier du soutien mutuel."
       ];
       imagePath = 'assets/images/smiley_sad.png';
-      backgroundColor = Colors.red[200]!;
     } else {
       result = "Très haute charge mentale";
       advice = [
@@ -52,7 +47,6 @@ class StudentResultsPage extends StatelessWidget {
         "Apprenez à déléguer certaines tâches non essentielles ou à demander de l'aide à votre entourage pour alléger votre charge mentale et éviter l'épuisement."
       ];
       imagePath = 'assets/images/smiley_very_sad.png';
-      backgroundColor = Colors.red[300]!;
     }
 
     return Scaffold(
@@ -61,7 +55,7 @@ class StudentResultsPage extends StatelessWidget {
         backgroundColor: Theme.of(context).primaryColor, // Couleur du header uniforme
       ),
       body: Container(
-        color: backgroundColor,
+        color: Color(0xFFFFF5DC), // Couleur de fond de la page
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -76,84 +70,90 @@ class StudentResultsPage extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 24,
                     fontFamily: 'MerriweatherSans-Bold',
-                    color: Colors.black,
+                    color: Colors.red, // Texte de résultat en rouge
                     fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 20),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Conseils:',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontFamily: 'MerriweatherSans-Bold',
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    ...advice.map((e) => Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "- ",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontFamily: 'MerriweatherSans-Light',
+                              color: Colors.black,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              e,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: 'MerriweatherSans-Light',
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )),
+                  ],
+                ),
+                SizedBox(height: 20),
+                GestureDetector(
+                  onTap: () => _launchURL('https://www.alphaacademie.fr/'),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Allez sur Alpha Académie, c'est gratuit!",
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Color(0xFF10069F), // Couleur du lien
+                          fontSize: 18,
+                          fontFamily: 'MerriweatherSans-Regular',
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      Icon(Icons.arrow_forward, color: Color(0xFF10069F)),
+                    ],
+                  ),
                 ),
                 SizedBox(height: 20),
                 Container(
                   padding: EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Theme.of(context).primaryColor),
+                    color: Color(0xFFFE5000), // Couleur de fond de la section de l'annonce
                     borderRadius: BorderRadius.circular(8),
-                    color: Colors.white.withOpacity(0.8),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Conseils:',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: 'MerriweatherSans-Bold',
-                          color: Colors.black,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      ...advice.map((e) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "- ",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontFamily: 'MerriweatherSans-Light',
-                                color: Colors.black,
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                e,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontFamily: 'MerriweatherSans-Regular',
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      )),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 20),
-                GestureDetector(
-                  onTap: () => _launchURL('https://www.alphaacademie.fr/'),
                   child: Text(
-                    "Allez sur Alpha Académie, c'est gratuit!",
+                    "Prochainement : une application de gestion du temps pour professeur et élève !",
                     style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      color: Color(0xFF10069F), // Couleur du lien
-                      fontSize: 18,
-                      fontFamily: 'MerriweatherSans-Light',
+                      fontSize: 16,
+                      fontFamily: 'MerriweatherSans-Bold',
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  "Prochainement : une application de gestion du temps pour professeur et élève !",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: 'MerriweatherSans-Regular',
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
                 ),
               ],
             ),
