@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'student_final_page.dart'; // Importez la nouvelle page
 
 class StudentResultsPage extends StatelessWidget {
   final double totalHours;
@@ -118,41 +118,26 @@ class StudentResultsPage extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 20),
-                GestureDetector(
-                  onTap: () => _launchURL('https://www.alphaacademie.fr/'),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Allez sur Alpha Académie, c'est gratuit!",
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          color: Color(0xFF10069F), // Couleur du lien
-                          fontSize: 18,
-                          fontFamily: 'MerriweatherSans-Regular',
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      Icon(Icons.arrow_forward, color: Color(0xFF10069F)),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 20),
-                Container(
-                  padding: EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: Color(0xFFFE5000), // Couleur de fond de la section de l'annonce
-                    borderRadius: BorderRadius.circular(8),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => StudentFinalPage()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF10069F), // Couleur de fond du bouton
+                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
                   child: Text(
-                    "Prochainement : une application de gestion du temps pour professeur et élève !",
+                    'Poursuivez',
                     style: TextStyle(
                       fontSize: 16,
-                      fontFamily: 'MerriweatherSans-Bold',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      fontFamily: 'MerriweatherSans-Light',
+                      color: Colors.white, // Couleur de l'écriture blanche
                     ),
-                    textAlign: TextAlign.center,
                   ),
                 ),
               ],
@@ -161,12 +146,5 @@ class StudentResultsPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<void> _launchURL(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (!await launchUrl(uri)) {
-      throw 'Could not launch $url';
-    }
   }
 }

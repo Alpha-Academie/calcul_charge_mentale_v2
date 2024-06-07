@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'settings_page.dart'; // Importez la nouvelle page des paramètres
 import 'teacher_page.dart';
 import 'student_page.dart';
 
 class WelcomePage extends StatelessWidget {
-  final GoogleSignInAccount? user;
+  final User? user;
 
   WelcomePage({this.user});
 

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'welcome_page.dart'; // Importez la nouvelle page de bienvenue
+import 'package:shared_preferences/shared_preferences.dart';
+import 'welcome_page.dart';
 
 class GoogleSignInButton extends StatefulWidget {
   @override
@@ -23,10 +24,18 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
         );
         await _auth.signInWithCredential(credential);
 
-        Navigator.push(
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        bool hasSeenNewsletterMessage = prefs.getBool('hasSeenNewsletterMessage_${googleUser.id}') ?? false;
+
+        if (!hasSeenNewsletterMessage) {
+          await _showNewsletterDialog(context, googleUser.email);
+          await prefs.setBool('hasSeenNewsletterMessage_${googleUser.id}', true);
+        }
+
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => WelcomePage(user: googleUser),
+            builder: (context) => WelcomePage(user: FirebaseAuth.instance.currentUser),
           ),
         );
       }
@@ -37,6 +46,32 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
         ),
       );
     }
+  }
+
+  Future<void> _showNewsletterDialog(BuildContext context, String? email) async {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Inscription à la Newsletter',
+            style: TextStyle(fontFamily: 'MerriweatherSans-Bold'),
+          ),
+          content: Text(
+            'En vous connectant, vous acceptez que votre adresse e-mail (${email ?? 'non fournie'}) soit utilisée pour vous inscrire à notre newsletter. Si vous ne le souhaitez pas, veuillez nous contacter.',
+            style: TextStyle(fontFamily: 'MerriweatherSans-Light'),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override

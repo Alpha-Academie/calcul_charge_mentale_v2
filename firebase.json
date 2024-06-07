@@ -1,1 +1,41 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"calcul-charge-mentale-v2","appId":"1:217297950271:android:d23d6e02f0f4f3a0e74a8a","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"calcul-charge-mentale-v2","configurations":{"android":"1:217297950271:android:d23d6e02f0f4f3a0e74a8a","ios":"1:217297950271:ios:ee9780365ac4f808e74a8a","macos":"1:217297950271:ios:ee9780365ac4f808e74a8a","web":"1:217297950271:web:2dcf68be8713623de74a8a","windows":"1:217297950271:web:482552a7397e7147e74a8a"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "calcul-charge-mentale-v2",
+          "appId": "1:217297950271:android:d23d6e02f0f4f3a0e74a8a",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "calcul-charge-mentale-v2",
+          "configurations": {
+            "android": "1:217297950271:android:d23d6e02f0f4f3a0e74a8a",
+            "ios": "1:217297950271:ios:ee9780365ac4f808e74a8a",
+            "macos": "1:217297950271:ios:ee9780365ac4f808e74a8a",
+            "web": "1:217297950271:web:2dcf68be8713623de74a8a",
+            "windows": "1:217297950271:web:482552a7397e7147e74a8a"
+          }
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint"
+      ]
+    }
+  ]
+}
