@@ -4,7 +4,7 @@ import 'teacher_final_page.dart';
 class TeacherResultsPage extends StatelessWidget {
   final double totalHours;
 
-  TeacherResultsPage({Key? key, required this.totalHours}) : super(key: key);
+  const TeacherResultsPage({super.key, required this.totalHours});
 
   @override
   Widget build(BuildContext context) {
@@ -51,11 +51,11 @@ class TeacherResultsPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Résultat de votre évaluation", style: TextStyle(color: Colors.white)),
+        title: const Text("Résultat de votre évaluation", style: TextStyle(color: Colors.white)),
         backgroundColor: Theme.of(context).primaryColor, // Couleur du header uniforme
       ),
       body: Container(
-        color: Color(0xFFFFF5DC), // Couleur de fond de la page
+        color: const Color(0xFFFFF5DC), // Couleur de fond de la page
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -64,10 +64,10 @@ class TeacherResultsPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Image.asset(imagePath, height: 100),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Text(
                   result,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 24,
                     fontFamily: 'MerriweatherSans-Bold',
                     color: Colors.red, // Texte de résultat en rouge
@@ -75,11 +75,11 @@ class TeacherResultsPage extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Conseils:',
                       style: TextStyle(
                         fontSize: 18,
@@ -88,13 +88,13 @@ class TeacherResultsPage extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     ...advice.map((e) => Padding(
                       padding: const EdgeInsets.symmetric(vertical: 4.0),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             "- ",
                             style: TextStyle(
                               fontSize: 16,
@@ -105,7 +105,7 @@ class TeacherResultsPage extends StatelessWidget {
                           Expanded(
                             child: Text(
                               e,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontFamily: 'MerriweatherSans-Light',
                                 color: Colors.black,
@@ -117,21 +117,21 @@ class TeacherResultsPage extends StatelessWidget {
                     )),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => TeacherFinalPage()),
+                      MaterialPageRoute(builder: (context) => const TeacherFinalPage()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF10069F), // Couleur de fond du bouton
-                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    backgroundColor: const Color(0xFF10069F), // Couleur de fond du bouton
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Poursuivez',
                     style: TextStyle(
                       fontSize: 16,

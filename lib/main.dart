@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';  // Importez le fichier de configuration Firebase
+import 'firebase_options.dart'; // Importez le fichier de configuration Firebase
 import 'google_sign_in_button.dart';
 
 void main() async {
@@ -8,47 +8,51 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key}); // Utilisation du super paramètre pour la clé
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: Color(0xFF10069F), // Couleur primaire
+        primaryColor: const Color(0xFF10069F), // Couleur primaire
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          secondary: Color(0xFFFE5000), // Couleur secondaire
+          secondary: const Color(0xFFFE5000), // Couleur secondaire
         ),
-        scaffoldBackgroundColor: Color(0xFFFFF5DC), // Blanc cassé
-        appBarTheme: AppBarTheme(
+        scaffoldBackgroundColor: const Color(0xFFFFF5DC), // Blanc cassé
+        appBarTheme: const AppBarTheme(
           color: Color(0xFF10069F), // Couleur primaire pour le header
           titleTextStyle: TextStyle(color: Colors.white, fontSize: 20), // Texte blanc pour le header
           iconTheme: IconThemeData(color: Colors.white), // Icônes blanches pour le header
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFF10069F), // Couleur primaire pour les boutons
+            backgroundColor: const Color(0xFF10069F), // Couleur primaire pour les boutons
             foregroundColor: Colors.white, // Couleur du texte des boutons
-            textStyle: TextStyle(
+            textStyle: const TextStyle(
               fontFamily: 'MerriweatherSans',
               fontWeight: FontWeight.bold,
             ),
           ),
         ),
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key}); // Utilisation du super paramètre pour la clé
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('OctoStress'),
+        title: const Text('OctoStress'), // Ajout de const ici
       ),
       body: Stack(
         children: [
@@ -80,8 +84,8 @@ class MyHomePage extends StatelessWidget {
               fit: BoxFit.contain,
             ),
           ),
-          Center(
-            child: MyHomePageContent(),
+          const Center(
+            child: MyHomePageContent(), // Ajout de const ici
           ),
         ],
       ),
@@ -90,6 +94,8 @@ class MyHomePage extends StatelessWidget {
 }
 
 class MyHomePageContent extends StatelessWidget {
+  const MyHomePageContent({super.key}); // Utilisation du super paramètre pour la clé
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -97,8 +103,8 @@ class MyHomePageContent extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          SizedBox(height: 50), // Espace pour les images en haut
-          Text(
+          const SizedBox(height: 50), // Espace pour les images en haut
+          const Text(
             'Bienvenue sur votre application de calcul de charge mentale OctoStress !',
             style: TextStyle(
               fontFamily: 'MerriweatherSans',
@@ -108,8 +114,8 @@ class MyHomePageContent extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 20),
-          Text(
+          const SizedBox(height: 20),
+          const Text(
             'Vous allez pouvoir mesurer votre charge mentale pour la semaine à venir',
             style: TextStyle(
               fontFamily: 'MerriweatherSans',
@@ -118,8 +124,8 @@ class MyHomePageContent extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 40),
-          GoogleSignInButton(),
+          const SizedBox(height: 40),
+          GoogleSignInButton(), // Suppression de const ici
         ],
       ),
     );

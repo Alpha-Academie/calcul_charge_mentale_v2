@@ -2,27 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class TeacherFinalPage extends StatelessWidget {
+  const TeacherFinalPage({super.key}); // Ajout de const et super.key
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("OctoStress", style: TextStyle(color: Colors.white)),
+        title: const Text("OctoStress", style: TextStyle(color: Colors.white)),
         backgroundColor: Theme.of(context).primaryColor, // Couleur du header uniforme
       ),
       body: Container(
-        color: Color(0xFFFFF5DC), // Couleur de fond de la page
+        color: const Color(0xFFFFF5DC), // Couleur de fond de la page
         child: Column(
           children: <Widget>[
-            SizedBox(height: 20), // Petite marge par rapport au point le plus haut
+            const SizedBox(height: 20), // Petite marge par rapport au point le plus haut
             Image.asset(
               'assets/images/banniere.jpg', // Afficher l'image banniere.jpg
               fit: BoxFit.cover,
             ),
-            SizedBox(height: 5), // Espace après l'image
-            Expanded(
+            const SizedBox(height: 5), // Espace après l'image
+            const Expanded(
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(16.0),
                   child: Text(
                     "Nous sommes ravis de vous annoncer le lancement prochain de notre nouvelle application de gestion du temps, spécialement conçue pour les professeurs et les étudiants. Cette application vous permettra de gérer efficacement votre planning, d'organiser vos tâches quotidiennes et d'optimiser votre emploi du temps pour une meilleure productivité.",
                     style: TextStyle(
@@ -38,13 +40,13 @@ class TeacherFinalPage extends StatelessWidget {
             ),
             Column(
               children: <Widget>[
-                Icon(Icons.arrow_downward, color: Color(0xFFFE5000), size: 66.0), // Flèche plus grosse
-                SizedBox(height: 10), // Espace entre la flèche et le texte
+                const Icon(Icons.arrow_downward, color: Color(0xFFFE5000), size: 66.0), // Flèche plus grosse
+                const SizedBox(height: 10), // Espace entre la flèche et le texte
                 GestureDetector(
                   onTap: () => _launchURL('https://www.alphaacademie.fr/'),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: const [
                       Text(
                         "Allez sur Alpha Académie, c'est gratuit!",
                         style: TextStyle(
@@ -59,7 +61,7 @@ class TeacherFinalPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 100), // Espace par rapport au bas de la page
+                const SizedBox(height: 100), // Espace par rapport au bas de la page
               ],
             ),
           ],

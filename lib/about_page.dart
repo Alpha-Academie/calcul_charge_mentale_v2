@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AboutPage extends StatelessWidget {
+  const AboutPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('À propos', style: TextStyle(color: Colors.white)),
+        title: const Text('À propos', style: TextStyle(color: Colors.white)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -16,51 +18,51 @@ class AboutPage extends StatelessWidget {
               'OctoStress',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Theme.of(context).primaryColor),
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               'Version 1.0.0',
-              style: TextStyle(fontSize: 16, color: Colors.grey[800]),
+              style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               'Description',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Theme.of(context).primaryColor),
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               'Cette application vous permet de mesurer votre charge mentale pour la semaine à venir. Utilisez-la pour mieux comprendre et gérer votre charge de travail.',
-              style: TextStyle(fontSize: 16, color: Colors.grey[800]),
+              style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               'Développeurs',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Theme.of(context).primaryColor),
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               'Zakaria OURAMDANI',
-              style: TextStyle(fontSize: 16, color: Colors.grey[800]),
+              style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
-            Text(
+            const Text(
               'Mucahit CELIK',
-              style: TextStyle(fontSize: 16, color: Colors.grey[800]),
+              style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               'Mentions légales',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Theme.of(context).primaryColor),
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               '© 2024 OctoStress. Tous droits réservés.',
-              style: TextStyle(fontSize: 16, color: Colors.grey[800]),
+              style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               'Liens utiles',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Theme.of(context).primaryColor),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             GestureDetector(
               onTap: () {
                 // Ouvrir le lien vers le site web officiel

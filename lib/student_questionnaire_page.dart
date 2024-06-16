@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'student_results_page.dart';
 
 class StudentQuestionnairePage extends StatefulWidget {
+  const StudentQuestionnairePage({super.key}); // Ajout du super paramètre pour la clé
+
   @override
-  _StudentQuestionnairePageState createState() => _StudentQuestionnairePageState();
+  StudentQuestionnairePageState createState() => StudentQuestionnairePageState();
 }
 
-class _StudentQuestionnairePageState extends State<StudentQuestionnairePage> {
+class StudentQuestionnairePageState extends State<StudentQuestionnairePage> {
   final PageController _controller = PageController();
   final List<TextEditingController> _controllers = List.generate(5, (index) => TextEditingController());
   final List<FocusNode> _focusNodes = List.generate(5, (index) => FocusNode());
 
-  final List<String> questions = [
+  final List<String> questions = const [
     "Combien d'heures de cours as-tu dans ta semaine ?",
     "Combien d'heures de sport ou activité de loisir as-tu en dehors des cours ?",
     "Combien d'heures d'évaluations as-tu cette semaine en classe ?",
@@ -27,11 +29,11 @@ class _StudentQuestionnairePageState extends State<StudentQuestionnairePage> {
         FocusScope.of(context).requestFocus(_focusNodes[_controller.page!.round()]);
       }
     });
-    _controllers.forEach((controller) {
+    for (var controller in _controllers) {
       controller.addListener(() {
         setState(() {}); // Redessine l'interface quand le texte change
       });
-    });
+    }
   }
 
   double calculateTotalHours() {
@@ -42,13 +44,13 @@ class _StudentQuestionnairePageState extends State<StudentQuestionnairePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Questionnaire Élève", style: TextStyle(color: Colors.white)),
+        title: const Text("Questionnaire Élève", style: TextStyle(color: Colors.white)),
       ),
       body: Container(
-        color: Color(0xFFFFF5DC), // Couleur de fond de la page
+        color: const Color(0xFFFFF5DC), // Couleur de fond de la page
         child: PageView.builder(
           controller: _controller,
-          physics: NeverScrollableScrollPhysics(), // Empêche le défilement manuel entre les pages
+          physics: const NeverScrollableScrollPhysics(), // Empêche le défilement manuel entre les pages
           itemCount: questions.length,
           itemBuilder: (context, index) {
             return SingleChildScrollView(
@@ -58,7 +60,7 @@ class _StudentQuestionnairePageState extends State<StudentQuestionnairePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    SizedBox(height: 40), // Écart en haut de la page
+                    const SizedBox(height: 40), // Écart en haut de la page
                     Text(
                       'Question ${index + 1}/${questions.length}',
                       style: TextStyle(
@@ -69,45 +71,45 @@ class _StudentQuestionnairePageState extends State<StudentQuestionnairePage> {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 10), // Ajout d'un écart entre le numéro de la question et la jauge
+                    const SizedBox(height: 10), // Ajout d'un écart entre le numéro de la question et la jauge
                     LinearProgressIndicator(
                       value: (index + 1) / questions.length,
-                      valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFFE5000)),
+                      valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFFFE5000)),
                       backgroundColor: Colors.grey[300],
                       minHeight: 10,
                     ),
-                    SizedBox(height: 40), // Plus grand écart entre la jauge et la question
+                    const SizedBox(height: 40), // Plus grand écart entre la jauge et la question
                     Text(
                       questions[index],
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                         fontFamily: 'MerriweatherSans-Regular',
                         color: Colors.black, // Couleur noire pour les questions
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 20), // Écart entre la question et le champ de saisie
+                    const SizedBox(height: 20), // Écart entre la question et le champ de saisie
                     TextField(
                       focusNode: _focusNodes[index],
                       controller: _controllers[index],
-                      keyboardType: TextInputType.numberWithOptions(decimal: true),
-                      style: TextStyle(
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                      style: const TextStyle(
                         fontFamily: 'MerriweatherSans-Light',
                       ),
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         hintText: "Entrez le nombre d'heures",
                         border: OutlineInputBorder(),
                       ),
                       autofocus: true,
                     ),
-                    SizedBox(height: 20), // Écart entre le champ de saisie et le bouton
+                    const SizedBox(height: 20), // Écart entre le champ de saisie et le bouton
                     Center(
                       child: ElevatedButton(
                         onPressed: _controllers[index].text.isNotEmpty
                             ? () {
                                 if (index < questions.length - 1) {
                                   _controller.nextPage(
-                                    duration: Duration(milliseconds: 300),
+                                    duration: const Duration(milliseconds: 300),
                                     curve: Curves.easeInOut,
                                   );
                                 } else {
@@ -123,15 +125,15 @@ class _StudentQuestionnairePageState extends State<StudentQuestionnairePage> {
                             : null, // Désactiver le bouton si le champ est vide
                         child: Text(
                           index < questions.length - 1 ? 'Suivant' : 'Terminer',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: 'MerriweatherSans-Light',
                             fontSize: 16,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 40), // Écart avant l'image en bas
-                    Image.asset(
+                    const SizedBox(height: 40), // Écart avant l'image en bas
+                     Image.asset(
                       'assets/images/logo_alpha_academie_orange.png',
                       height: 100,
                       fit: BoxFit.contain,
@@ -148,8 +150,12 @@ class _StudentQuestionnairePageState extends State<StudentQuestionnairePage> {
 
   @override
   void dispose() {
-    _controllers.forEach((controller) => controller.dispose());
-    _focusNodes.forEach((node) => node.dispose());
+    for (var controller in _controllers) {
+      controller.dispose();
+    }
+    for (var node in _focusNodes) {
+      node.dispose();
+    }
     _controller.dispose();
     super.dispose();
   }

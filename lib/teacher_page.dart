@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'teacher_questionnaire_page.dart';
 
 class TeacherPage extends StatelessWidget {
+  const TeacherPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Professeur", style: TextStyle(color: Colors.white)),
+        title: const Text("Professeur", style: TextStyle(color: Colors.white)),
       ),
       body: Stack(
         children: [
@@ -29,12 +31,12 @@ class TeacherPage extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             alignment: Alignment.center,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Spacer(flex: 2), // Pour pousser le texte vers le haut
+                const Spacer(flex: 2), // Pour pousser le texte vers le haut
                 Text(
                   "Prêt à évaluer votre charge mentale pour la semaine ?",
                   style: TextStyle(
@@ -45,16 +47,16 @@ class TeacherPage extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Image.asset(
                   'assets/images/prof.png',
                   height: 150, // Taille de l'image
                   fit: BoxFit.contain,
                 ),
-                Spacer(flex: 1),
+                const Spacer(flex: 1),
                 Column(
                   children: [
-                    Text(
+                    const Text(
                       "Vous allez répondre à 6 questions qui vous prendrons seulement 2 minutes.",
                       style: TextStyle(
                         fontSize: 18,
@@ -63,14 +65,14 @@ class TeacherPage extends StatelessWidget {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => TeacherQuestionnairePage()),
+                          MaterialPageRoute(builder: (context) =>  TeacherQuestionnairePage()),
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         "Commencer le questionnaire",
                         style: TextStyle(
                           fontFamily: 'MerriweatherSans-Light',
@@ -80,7 +82,7 @@ class TeacherPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                Spacer(flex: 3),
+                const Spacer(flex: 3),
               ],
             ),
           ),
@@ -88,4 +90,10 @@ class TeacherPage extends StatelessWidget {
       ),
     );
   }
+}
+
+void main() {
+  runApp(const MaterialApp(
+    home: TeacherPage(),
+  ));
 }

@@ -7,16 +7,16 @@ import 'student_page.dart';
 class WelcomePage extends StatelessWidget {
   final User? user;
 
-  WelcomePage({this.user});
+  const WelcomePage({super.key, this.user}); // Utilisation de super.key
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bienvenue', style: TextStyle(color: Colors.white)),
+        title: const Text('Bienvenue', style: TextStyle(color: Colors.white)),
         actions: [
           IconButton(
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => SettingsPage(user: user)),
@@ -27,7 +27,7 @@ class WelcomePage extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          Positioned(
+           Positioned(
             top: 0,
             right: 0,
             child: Image.asset(
@@ -36,7 +36,7 @@ class WelcomePage extends StatelessWidget {
               fit: BoxFit.contain,
             ),
           ),
-          Positioned(
+           Positioned(
             bottom: 0,
             left: 0,
             child: Image.asset(
@@ -46,12 +46,12 @@ class WelcomePage extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             alignment: Alignment.center,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Spacer(flex: 3),  // Pour pousser le texte de bienvenue vers le haut
+                const Spacer(flex: 3),  // Pour pousser le texte de bienvenue vers le haut
                 Text(
                   "Bonjour ${user?.displayName ?? "Cher utilisateur"} 😊",
                   style: TextStyle(
@@ -62,8 +62,8 @@ class WelcomePage extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                Spacer(flex: 1),  // Ajouter de l'espace après le texte de bienvenue
-                Text(
+                const Spacer(flex: 1),  // Ajouter de l'espace après le texte de bienvenue
+                const Text(
                   "Choisissez votre rôle :",
                   style: TextStyle(
                     fontSize: 20,
@@ -72,17 +72,17 @@ class WelcomePage extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Center(
                   child: Column(
                     children: [
                       ElevatedButton(
                         onPressed: () {
                           Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => TeacherPage()),
+                            MaterialPageRoute(builder: (context) => const TeacherPage()),
                           );
                         },
-                        child: Text(
+                        child: const Text(
                           'Je suis professeur',
                           style: TextStyle(
                             fontFamily: 'MerriweatherSans-Light',
@@ -90,14 +90,14 @@ class WelcomePage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20), // Plus d'espace entre les boutons
+                      const SizedBox(height: 20), // Plus d'espace entre les boutons
                       ElevatedButton(
                         onPressed: () {
                           Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => StudentPage()),
+                            MaterialPageRoute(builder: (context) => const StudentPage()),
                           );
                         },
-                        child: Text(
+                        child: const Text(
                           'Je suis élève',
                           style: TextStyle(
                             fontFamily: 'MerriweatherSans-Light',
@@ -108,7 +108,7 @@ class WelcomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Spacer(flex: 4),  // Ajouter de l'espace après les boutons
+                const Spacer(flex: 4),  // Ajouter de l'espace après les boutons
               ],
             ),
           ),

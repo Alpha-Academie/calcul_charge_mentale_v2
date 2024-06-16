@@ -5,11 +5,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'welcome_page.dart';
 
 class GoogleSignInButton extends StatefulWidget {
+  const GoogleSignInButton({super.key});
+
   @override
-  _GoogleSignInButtonState createState() => _GoogleSignInButtonState();
+  GoogleSignInButtonState createState() => GoogleSignInButtonState();
 }
 
-class _GoogleSignInButtonState extends State<GoogleSignInButton> {
+class GoogleSignInButtonState extends State<GoogleSignInButton> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
@@ -28,23 +30,29 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
         bool hasSeenNewsletterMessage = prefs.getBool('hasSeenNewsletterMessage_${googleUser.id}') ?? false;
 
         if (!hasSeenNewsletterMessage) {
-          await _showNewsletterDialog(context, googleUser.email);
+          if (mounted) {
+            await _showNewsletterDialog(context, googleUser.email);
+          }
           await prefs.setBool('hasSeenNewsletterMessage_${googleUser.id}', true);
         }
 
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => WelcomePage(user: FirebaseAuth.instance.currentUser),
+        if (mounted) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => WelcomePage(user: FirebaseAuth.instance.currentUser),
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Erreur de connexion : ${e.toString()}'),
           ),
         );
       }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Erreur de connexion : ${e.toString()}'),
-        ),
-      );
     }
   }
 
@@ -53,20 +61,20 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(
+          title: const Text(
             'Inscription à la Newsletter',
             style: TextStyle(fontFamily: 'MerriweatherSans-Bold'),
           ),
           content: Text(
             'En vous connectant, vous acceptez que votre adresse e-mail (${email ?? 'non fournie'}) soit utilisée pour vous inscrire à notre newsletter. Si vous ne le souhaitez pas, veuillez nous contacter.',
-            style: TextStyle(fontFamily: 'MerriweatherSans-Light'),
+            style: const TextStyle(fontFamily: 'MerriweatherSans-Light'),
           ),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('OK'),
+              child: const Text('OK'),
             ),
           ],
         );
@@ -78,11 +86,11 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
       onPressed: _signInWithGoogle,
-      icon: Icon(Icons.login, color: Colors.white),
-      label: Text('Se connecter avec Google', style: TextStyle(color: Colors.white)),
+      icon: const Icon(Icons.login, color: Colors.white),
+      label: const Text('Se connecter avec Google', style: TextStyle(color: Colors.white)),
       style: ElevatedButton.styleFrom(
         backgroundColor: Theme.of(context).primaryColor,
-        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),

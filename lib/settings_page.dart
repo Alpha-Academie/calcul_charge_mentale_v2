@@ -5,16 +5,22 @@ import 'main.dart';
 import 'about_page.dart';
 import 'security_page.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends StatefulWidget {
   final User? user;
 
-  SettingsPage({this.user});
+  const SettingsPage({super.key, this.user}); // Ajout du super paramètre
 
+  @override
+  _SettingsPageState createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
   Future<void> _signOut(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
     await GoogleSignIn().signOut();
+    if (!mounted) return;
     Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(builder: (context) => MyApp()),
+      MaterialPageRoute(builder: (context) => const MyApp()), // Ajout de const
       (Route<dynamic> route) => false,
     );
   }
@@ -24,28 +30,28 @@ class SettingsPage extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(
+          title: const Text(
             'Confirmation',
             style: TextStyle(fontFamily: 'MerriweatherSans-Bold', color: Colors.white),
           ),
-          content: Text(
+          content: const Text(
             'Êtes-vous sûr de vouloir vous déconnecter ?',
             style: TextStyle(fontFamily: 'MerriweatherSans-Light', color: Colors.white),
           ),
-          backgroundColor: Color(0xFF10069F),
+          backgroundColor: const Color(0xFF10069F),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(); // Fermer le dialogue
               },
-              child: Text('Non'),
+              child: const Text('Non'), // Ajout de const
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(); // Fermer le dialogue
                 _signOut(context); // Effectuer la déconnexion
               },
-              child: Text('Oui'),
+              child: const Text('Oui'), // Ajout de const
             ),
           ],
         );
@@ -57,37 +63,37 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Paramètres', style: TextStyle(color: Colors.white)),
+        title: const Text('Paramètres', style: TextStyle(color: Colors.white)), // Ajout de const
       ),
       body: ListView(
         children: <Widget>[
           ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text('Compte'),
-            subtitle: Text('${user?.displayName}\n${user?.email}'),
+            leading: const Icon(Icons.account_circle), // Ajout de const
+            title: const Text('Compte'), // Ajout de const
+            subtitle: Text('${widget.user?.displayName}\n${widget.user?.email}'),
             isThreeLine: true,
           ),
           ListTile(
-            leading: Icon(Icons.security),
-            title: Text('Sécurité et Confidentialité'),
+            leading: const Icon(Icons.security), // Ajout de const
+            title: const Text('Sécurité et Confidentialité'), // Ajout de const
             onTap: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => SecurityPage()),
+                MaterialPageRoute(builder: (context) => const SecurityPage()), // Ajout de const
               );
             },
           ),
           ListTile(
-            leading: Icon(Icons.info),
-            title: Text('À propos'),
+            leading: const Icon(Icons.info), // Ajout de const
+            title: const Text('À propos'), // Ajout de const
             onTap: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => AboutPage()),
+                MaterialPageRoute(builder: (context) => const AboutPage()), // Ajout de const
               );
             },
           ),
           ListTile(
-            leading: Icon(Icons.exit_to_app),
-            title: Text('Déconnexion'),
+            leading: const Icon(Icons.exit_to_app), // Ajout de const
+            title: const Text('Déconnexion'), // Ajout de const
             onTap: () => _confirmSignOut(context),
           ),
         ],
